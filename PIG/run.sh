@@ -1,4 +1,5 @@
-cd /scratch/summit/erke2265/
+#!/bin/bash
+
 module purge
 ml singularity/3.6.4
 
@@ -9,14 +10,5 @@ export SINGULARITY_LOCALCACHEDIR
 export SINGULARITY_CACHEDIR
 export SINGULARITY_TMPDIR
 
-singularity run -B /scratch/summit/erke2265/:/scratch/summit/erke2265/ ubuntu-windninja_latest.sif
+singularity exec -B /scratch/summit/erke2265/:/scratch/summit/erke2265/ /scratch/summit/erke2265/ubuntu-windninja_latest.sif bash /scratch/summit/erke2265/windninja/PIG/windninja.sh
 
-# Loop through each directory and run WindNinja
-cd /scratch/summit/erke2265/windninja/PIG/
-for dir in */
-do
-    echo ${dir}
-    pushd ${dir}
-    /opt/src/usr/bin/WindNinja_cli PIG.cfg
-    popd
-done

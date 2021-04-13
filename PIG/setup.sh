@@ -4,14 +4,18 @@
 module purge
 ml intel; ml proj; ml gdal
 
+# Purge all old output
+rm -r processed_output
+rm -r 1980*
+
 # WindNinja simulation domain spatial bounds
-ulx=-1540000
-uly=-10000
-lrx=-1400000
-lry=-110000
+ulx=-1576800
+uly=26700
+lrx=-1339200
+lry=-137700
 
 # Atmospheric forcing resolution
-tgt_res=15000 # unit meters
+tgt_res=30000 # unit meters
 
 # Source DEM path
 src_dem_path=/pl/active/nasa_smb/Data/IS2_cycle_1_2_3_DEM_noFilter.tif
