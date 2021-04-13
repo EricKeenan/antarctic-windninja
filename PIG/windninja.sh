@@ -1,13 +1,8 @@
 #!/bin/bash
 
-# Loop through each directory and run WindNinja
-cd /scratch/summit/erke2265/windninja/PIG/
+# Timestep in format 198001010100 (YYYYMMDDHHMM)
+ts=$1
 
-for dir in */
-do
-	echo ${dir}
-	pushd ${dir}
-	/opt/src/usr/bin/WindNinja_cli PIG.cfg
-	popd
-done
-
+# Run WindNinja
+cd /scratch/summit/erke2265/windninja/PIG/${ts}
+/opt/src/usr/bin/WindNinja_cli PIG.cfg

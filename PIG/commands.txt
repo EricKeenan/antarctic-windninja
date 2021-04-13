@@ -1,0 +1,2 @@
+bash run.sh 198001010100
+bash run.sh 198001010200
