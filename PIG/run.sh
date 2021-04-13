@@ -41,7 +41,7 @@ gdal_translate -of AAIGrid -tr ${tgt_res} ${tgt_res} ${meteo_dir}/${ts}.dw ./inp
 gdal_translate -of GTiff -a_nodata -9999 -projwin ${ulx} ${uly} ${lrx} ${lry} ${src_dem_path} ./input/PIG.tif # DEM
 
 ### Run ###
-singularity exec -B /scratch/summit/erke2265/:/scratch/summit/erke2265/ /scratch/summit/erke2265/ubuntu-windninja_latest.sif bash /scratch/summit/erke2265/windninja/PIG/windninja.sh ${ts}
+singularity exec -B /scratch/summit/erke2265/:/scratch/summit/erke2265/ /scratch/summit/erke2265/ubuntu-windninja_latest.sif bash /scratch/summit/erke2265/antarctic-windninja/PIG/windninja.sh ${ts}
 
 ### Postprocess ###
 # Make processed output directory
@@ -54,5 +54,5 @@ lrx=-1359000
 lry=-124000
 
 # Perform gdal trimming
-gdal_translate -of AAIGrid -a_nodata -9999 -projwin ${ulx} ${uly} ${lrx} ${lry} output/PIG_1000m_vel.asc ../processed_output/${ts}00_VW.asc
-gdal_translate -of AAIGrid -a_nodata -9999 -projwin ${ulx} ${uly} ${lrx} ${lry} output/PIG_1000m_ang.asc ../processed_output/${ts}00_DW.asc
+gdal_translate -of AAIGrid -a_nodata -9999 -projwin ${ulx} ${uly} ${lrx} ${lry} ./output/PIG_1000m_vel.asc ../processed_output/${ts}00_VW.asc
+gdal_translate -of AAIGrid -a_nodata -9999 -projwin ${ulx} ${uly} ${lrx} ${lry} ./output/PIG_1000m_ang.asc ../processed_output/${ts}00_DW.asc
