@@ -2,6 +2,7 @@
 
 # Timestep in format 198001010100 (YYYYMMDDHHMM)
 ts=$1
+base_dir=$4
 
 ### Setup ###
 # WindNinja simulation domain spatial bounds
@@ -14,10 +15,10 @@ lry=-137700
 tgt_res=30000 # unit meters
 
 # Source DEM path
-src_dem_path=/pl/active/nasa_smb/Data/IS2_cycle_1_2_3_DEM_noFilter.tif
+src_dem_path=$2
 
 # Copy input files
-meteo_dir="/scratch/summit/erke2265/LISTON_EXPLORE/output/grids/"
+meteo_dir=$3
 
 # Make timestep directory
 rm -rf ${ts}
@@ -41,7 +42,7 @@ gdal_translate -of AAIGrid -tr ${tgt_res} ${tgt_res} ${meteo_dir}/${ts}.dw ./inp
 gdal_translate -of GTiff -a_nodata -9999 -projwin ${ulx} ${uly} ${lrx} ${lry} ${src_dem_path} ./input/PIG.tif # DEM
 
 ### Run ###
-singularity exec -B /scratch/summit/erke2265/:/scratch/summit/erke2265/ /scratch/summit/erke2265/ubuntu-windninja_latest.sif bash /scratch/summit/erke2265/antarctic-windninja/PIG/windninja.sh ${ts}
+singularity exec -B ${base_dir}/../../:${base_dir}/../../ ${base_dir}/../../ubuntu-windninja_latest.sif bash ${base_dir}/windninja.sh ${ts} ${base_dir}
 
 ### Postprocess ###
 # Make processed output directory
