@@ -1,2 +1,5 @@
 # Don't track these directories
 PIG/1980*
+nc_files/
+.ipynb_checkpoints/
+PIG/processed_output/
