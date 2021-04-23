@@ -19,20 +19,21 @@ If you would like to use my existing `ubuntu-windninja` `Docker` container, you 
 ```bash
 # Switch to a compile node and activate Singularity module
 ssh scompile
-cd /scratch/summit/erke2265/
+cache_dir=/scratch/summit/erke2265/ # Update this to your desired directory.
+cd ${cache_dir}
 ml singularity/3.6.4
 
 # Set singularity cache directories and settings 
-SINGULARITY_LOCALCACHEDIR=/scratch/summit/erke2265/
-SINGULARITY_CACHEDIR=/scratch/summit/erke2265/
-SINGULARITY_TMPDIR=/scratch/summit/erke2265/
+SINGULARITY_LOCALCACHEDIR=${cache_dir}
+SINGULARITY_CACHEDIR=${cache_dir}
+SINGULARITY_TMPDIR=${cache_dir}
 export SINGULARITY_LOCALCACHEDIR
 export SINGULARITY_CACHEDIR
 export SINGULARITY_TMPDIR
 
 # Pull image from Docker Hub and activate
 singularity pull docker://ekeenan/ubuntu-windninja
-singularity run -B /scratch/summit/erke2265/:/scratch/summit/erke2265/ ubuntu-windninja_latest.sif
+singularity run -B ${cache_dir}:${cache_dir} ubuntu-windninja_latest.sif
 ```
 
 Alternatively, if you would like to build your own Docker container, you can mimic my workflow:
