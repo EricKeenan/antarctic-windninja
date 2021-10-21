@@ -66,7 +66,7 @@ cd /opt/src/windninja
 
 # Send docker image from local machine to docker hub 
 docker ps -a
-docker commit c93a2e0ef80c ubuntu-windninja
-docker tag 768516e547e4 ekeenan/ubuntu-windninja
+docker commit c93a2e0ef80c ubuntu-windninja # The tag is the container's id
+docker tag 768516e547e4 ekeenan/ubuntu-windninja # The tag is the image's id
 docker push ekeenan/ubuntu-windninja
 ```
