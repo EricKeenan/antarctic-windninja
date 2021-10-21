@@ -1,2 +1,1 @@
-bash run.sh 198001010100
-bash run.sh 198001010200
+bash run.sh 198001010100 /pl/active/nasa_smb/Data/IS2_cycle_1_2_3_DEM_noFilter.tif /scratch/summit/erke2265/LISTON_EXPLORE/output/grids/ /scratch/summit/erke2265/antarctic-windninja/PIG
